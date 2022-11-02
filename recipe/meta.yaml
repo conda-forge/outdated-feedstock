@@ -1,5 +1,5 @@
 {% set name = "outdated" %}
-{% set version = "0.2.1" %}
+{% set version = "0.2.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: d92921a3d77bc56a6d39c0af321aad44b223906ebb6e8139996d26116baec573
+  sha256: 4b7fdec88e36711120d096d485fc4d5035e4e5ffbd907cf3a6ce2af43058b970
 
 build:
   noarch: python
@@ -20,6 +20,7 @@ requirements:
     - pip
   run:
     - python >=3.5
+    - setuptools >=44
     - littleutils
     - requests
 
