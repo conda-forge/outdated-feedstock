@@ -11,13 +11,15 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - python >=3.5
     - pip
+    - setuptools >=44
+    - setuptools_scm >=3.4.3
   run:
     - python >=3.5
     - setuptools >=44
@@ -27,6 +29,11 @@ requirements:
 test:
   imports:
     - outdated
+  commands:
+    # make sure the version reported by pip is correct
+    - "pip show {{ name }} | grep -Fx 'Version: {{ version }}'"
+  requires:
+    - pip
 
 about:
   home: https://github.com/alexmojaki/outdated
